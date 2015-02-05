@@ -1,0 +1,94 @@
+= Multi-module projects in Eclipse
+Peter Palaga, Red Hat JBoss Portal
+DevConf Brno 2015-02-07
+:icons: font
+
+== Please raise your hand!
+
+[options="step"]
+* Who has ever used (or even tried to use) Eclipse to code in any programming language?
+* Who has left Eclipse for another IDE?
+* Who is working with large multi-module projects daily?
+
+== Multi-module project in Eclipse (1/2)
+
+Take GateIn Portal as a an example:
+[source]
+----
+git clone https://github.com/gatein/gatein-portal
+----
+\... and import to Elipse as a bunch of Maven projects
+
+== Multi-module project in Eclipse (2/2)
+
+[frame="none",grid="none"]
+|=========================================================
+|While the file system hierarchy mirrors the logical structure of the modules|{nbsp}|
+In Eclipse we are presented with a flat list of 109 projects ordered by artifactId
+
+|image:fs.png[]|{nbsp}|image:eclipse-flat.png[]
+
+|=========================================================
+
+//** To make it even worse, imagine that you want to import another related source tree with tens of modules...
+//*** Eclipse mixes them luckily with what you have in your workspace
+// and you end up with a mixed lists
+
+== Workarounds
+
+* Working sets
+** One level only
+** Only manually
+** Does not scale when having many modules
+* Naming conventions
+** Name the modules so that they keep the file system order when ordered alphabetically
+** Guaranteed to look stupid in front of IntelliJ and NetBeans users
+* Use multiple workspaces to manage parts of a single source tree?
+
+None of the above helps really
+
+== The aim
+
+image::fs.png[float="right"]
+This is what we want +
+because this is how we think
+
+
+//== The Proper Solution
+//
+//image::nesting-menu.png[float="right" ]
+//
+//No, I will not be talking about
+//switching to IntelliJ that has
+//this for years ;)
+
+== Because open source...
+
+* Initiative taken by Mickeal Istria and Max Andersen from JBoss Tools team
+* Started in jbosstools-playground repository under the name Nestor
+* Technically astonishingly simple and elegant, using the available APIs of Project Manager
+image::intellij.png[float="right"]
+* Form the user perspective:
+** New context menu in Project Explorer
+** Backed by a persistent preference
+
+== The happy end
+
+* Meanwhile accepted for Eclipse Mars 4.5 M5 (to appear on 2015-02-06)
+* Download and try it!
+* https://eclipse.org/downloads/packages/release/Mars/
+
+== Still missing
+
+* No change in the Package Explorer
+//** Package Explorer will once hopefully be merged into Project Explorer
+* The same functionality in the Search View
+
+== About me
+
+* Primarily Senior Sustaining Engineer at Red Hat JBoss Portal
+* Also contributing to several Eclipse plugins ShellEd, FreeMarker Editor, EIRCC
+* My contribution to nested projects was minimal
+
+icon:twitter[] @ppalaga +
+icon:github[] https://github.com/ppalaga
